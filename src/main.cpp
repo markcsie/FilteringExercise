@@ -36,13 +36,13 @@ int main()
   Eigen::MatrixXd B(1, 1);
   B << 1.5;
   Eigen::MatrixXd Rt(1, 1);
-  Rt << 1;
+  Rt << 0.01;
   auto linear_motion_model = LinearMotionModel::ConstPtr(new LinearMotionModel(A, B, Rt));
 
   Eigen::MatrixXd C(1, 1);
   C << 1;
   Eigen::MatrixXd Qt(1, 1);
-  Qt << 0.01;
+  Qt << 1;
   auto linear_measurement_model = LinearMeasurementModel::ConstPtr(new LinearMeasurementModel(C, Qt));
 
   Eigen::VectorXd x0(1);
@@ -56,15 +56,12 @@ int main()
   std::ofstream kf_output_file("../data/kf_output.data");
   std::ofstream if_output_file("../data/if_output.data");
 
-  std::cout << "data_vector.size() " << data_vector.size() << std::endl;
   for (size_t i = 0; i < data_vector.size(); ++i)
   {
-//    std::cout << data_vector[i].z << " " << data_vector[i].real_x << " " << data_vector[i].u << std::endl;
     Eigen::VectorXd z(1);
     z << data_vector[i].z;
     kalman_filter.correct(z);
     information_filter.correct(z);
-    std::cout << (kalman_filter.getX())(0, 0) << std::endl;
 
     if (i > 0)
     {
@@ -73,10 +70,9 @@ int main()
       kalman_filter.predict(u);
       information_filter.predict(u);
     }
+
     kf_output_file << (kalman_filter.getX())(0, 0) << " " << data_vector[i].real_x << " " << data_vector[i].z << std::endl;
     if_output_file << (information_filter.getX())(0, 0) << " " << data_vector[i].real_x << " " << data_vector[i].z << std::endl;
-
-//    std::cout << (kalman_filter.getX())(0, 0) << std::endl;
   }
   kf_output_file.close();
   if_output_file.close();

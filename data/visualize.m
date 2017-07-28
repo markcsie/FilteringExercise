@@ -1,4 +1,4 @@
-data = importdata('kf_output.data');
+data = importdata('if_output.data');
 filtered_x = data(:, 1);
 real_x = data(:, 2);
 z = data(:, 3);
