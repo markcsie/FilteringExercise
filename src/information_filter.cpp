@@ -1,4 +1,4 @@
-#include "information_filter.h"
+#include "../include/information_filter.h"
 
 #include <memory>
 #include <iostream>

@@ -1,14 +1,14 @@
-#ifndef FILTER_H
-#define FILTER_H
+#ifndef INCLUDE_FILTER_H_
+#define INCLUDE_FILTER_H_
 
 #include <Eigen/Dense>
-
-#include "motion_model.h"
-#include "measurement_model.h"
+#include <string>
+#include "./motion_model.h"
+#include "./measurement_model.h"
 
 class Filter
 {
-public:
+ public:
   virtual ~Filter()
   {
   }
@@ -26,7 +26,7 @@ public:
     return x_;
   }
 
-protected:
+ protected:
   std::string type_;
   Eigen::VectorXd x_;
 
@@ -34,4 +34,4 @@ protected:
   MeasurementModel::ConstPtr measurement_model_;
 };
 
-#endif // FILTER_H
+#endif  // INCLUDE_FILTER_H_

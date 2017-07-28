@@ -1,12 +1,13 @@
-#ifndef MEASUREMENT_MODEL_H
-#define MEASUREMENT_MODEL_H
+#ifndef INCLUDE_MEASUREMENT_MODEL_H_
+#define INCLUDE_MEASUREMENT_MODEL_H_
 
-#include <memory>
 #include <Eigen/Dense>
+#include <string>
+#include <memory>
 
 class MeasurementModel
 {
-public:
+ public:
   typedef std::shared_ptr<MeasurementModel> Ptr;
   typedef std::shared_ptr<const MeasurementModel> ConstPtr;
 
@@ -14,8 +15,8 @@ public:
   {
   }
 
-  // TODO: for non-linear model
-//  virtual Eigen::VectorXd h(const Eigen::VectorXd &x) = 0;
+  // TODO(markcsie): for non-linear model
+  // virtual Eigen::VectorXd h(const Eigen::VectorXd &x) = 0;
 
   const std::string &getType() const
   {
@@ -32,10 +33,10 @@ public:
     return Qt_inv_;
   }
 
-protected:
+ protected:
   std::string type_;
   Eigen::MatrixXd Qt_;
   Eigen::MatrixXd Qt_inv_;
 };
 
-#endif // MEASUREMENT_MODEL_H
+#endif  // INCLUDE_MEASUREMENT_MODEL_H_

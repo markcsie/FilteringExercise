@@ -14,7 +14,6 @@ file(GLOB SRC
 )
 
 include_directories(
-  include
   ${EIGEN3_INCLUDE_DIR}
 )
 

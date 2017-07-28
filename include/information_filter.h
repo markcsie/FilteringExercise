@@ -1,13 +1,13 @@
-#ifndef INFORMATION_FILTER_H
-#define INFORMATION_FILTER_H
+#ifndef INCLUDE_INFORMATION_FILTER_H_
+#define INCLUDE_INFORMATION_FILTER_H_
 
-#include "filter.h"
-#include "linear_motion_model.h"
-#include "linear_measurement_model.h"
+#include "./filter.h"
+#include "./linear_motion_model.h"
+#include "./linear_measurement_model.h"
 
 class InformationFilter : public Filter
 {
-public:
+ public:
   InformationFilter(const Eigen::VectorXd &x0,
                     const Eigen::MatrixXd &covariance0,
                     LinearMotionModel::ConstPtr motion_model,
@@ -23,11 +23,10 @@ public:
     return covariance_;
   }
 
-protected:
+ protected:
   Eigen::MatrixXd information_matrix_;
   Eigen::MatrixXd covariance_;
   Eigen::VectorXd information_vector_;
-
 };
 
-#endif // INFORMATION_FILTER_H
+#endif  // INCLUDE_INFORMATION_FILTER_H_

@@ -1,13 +1,13 @@
-#ifndef KALMAN_FILTER_H
-#define KALMAN_FILTER_H
+#ifndef INCLUDE_KALMAN_FILTER_H_
+#define INCLUDE_KALMAN_FILTER_H_
 
-#include "filter.h"
-#include "linear_motion_model.h"
-#include "linear_measurement_model.h"
+#include "./filter.h"
+#include "./linear_motion_model.h"
+#include "./linear_measurement_model.h"
 
 class KalmanFilter : public Filter
 {
-public:
+ public:
   KalmanFilter(const Eigen::VectorXd &x0,
                const Eigen::MatrixXd &covariance0,
                LinearMotionModel::ConstPtr motion_model,
@@ -23,10 +23,9 @@ public:
     return covariance_;
   }
 
-protected:
+ protected:
   Eigen::MatrixXd mean_;
   Eigen::MatrixXd covariance_;
-
 };
 
-#endif // KALMAN_FILTER_H
+#endif  // INCLUDE_KALMAN_FILTER_H_

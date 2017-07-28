@@ -1,12 +1,13 @@
-#ifndef MOTION_MODEL_H
-#define MOTION_MODEL_H
+#ifndef INCLUDE_MOTION_MODEL_H_
+#define INCLUDE_MOTION_MODEL_H_
 
-#include <memory>
 #include <Eigen/Dense>
+#include <string>
+#include <memory>
 
 class MotionModel
 {
-public:
+ public:
   typedef std::shared_ptr<MotionModel> Ptr;
   typedef std::shared_ptr<const MotionModel> ConstPtr;
 
@@ -15,8 +16,8 @@ public:
   {
   }
 
-  // TODO: for non-linear model
-//  virtual Eigen::VectorXd g(const Eigen::VectorXd &u, const Eigen::VectorXd &x) const = 0;
+  // TODO(markcsie): for non-linear model
+  // virtual Eigen::VectorXd g(const Eigen::VectorXd &u, const Eigen::VectorXd &x) const = 0;
 
   virtual const Eigen::MatrixXd &calculateRt() const
   {
@@ -28,9 +29,9 @@ public:
     return type_;
   }
 
-protected:
+ protected:
   Eigen::MatrixXd Rt_;
   std::string type_;
 };
 
-#endif // MOTION_MODEL_H
+#endif  // INCLUDE_MOTION_MODEL_H_

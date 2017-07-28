@@ -1,11 +1,12 @@
-#ifndef LINEAR_MEASUREMENT_MODEL_H
-#define LINEAR_MEASUREMENT_MODEL_H
+#ifndef INCLUDE_LINEAR_MEASUREMENT_MODEL_H_
+#define INCLUDE_LINEAR_MEASUREMENT_MODEL_H_
 
-#include "measurement_model.h"
+#include <memory>
+#include "./measurement_model.h"
 
 class LinearMeasurementModel : public MeasurementModel
 {
-public:
+ public:
   typedef std::shared_ptr<LinearMeasurementModel> Ptr;
   typedef std::shared_ptr<const LinearMeasurementModel> ConstPtr;
 
@@ -24,8 +25,8 @@ public:
     return C_;
   }
 
-protected:
+ protected:
   Eigen::MatrixXd C_;
 };
 
-#endif // LINEAR_MEASUREMENT_MODEL_H
+#endif  // INCLUDE_LINEAR_MEASUREMENT_MODEL_H_

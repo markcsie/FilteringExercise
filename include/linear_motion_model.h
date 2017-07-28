@@ -1,12 +1,13 @@
-#ifndef LINEARMOTIONMODEL_H
-#define LINEARMOTIONMODEL_H
+#ifndef INCLUDE_LINEAR_MOTION_MODEL_H_
+#define INCLUDE_LINEAR_MOTION_MODEL_H_
 
-#include "motion_model.h"
 #include <Eigen/Dense>
+#include <memory>
+#include "./motion_model.h"
 
 class LinearMotionModel : public MotionModel
 {
-public:
+ public:
   typedef std::shared_ptr<LinearMotionModel> Ptr;
   typedef std::shared_ptr<const LinearMotionModel> ConstPtr;
 
@@ -31,10 +32,9 @@ public:
     return B_;
   }
 
-protected:
+ protected:
   Eigen::MatrixXd A_;
   Eigen::MatrixXd B_;
-
 };
 
-#endif // LINEARMOTIONMODEL_H
+#endif  // INCLUDE_LINEAR_MOTION_MODEL_H_

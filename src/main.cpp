@@ -1,12 +1,13 @@
 #include <iostream>
+#include <string>
 #include <vector>
 #include <fstream>
 
-#include "filter.h"
-#include "linear_motion_model.h"
-#include "linear_measurement_model.h"
-#include "kalman_filter.h"
-#include "information_filter.h"
+#include "../include/filter.h"
+#include "../include/linear_motion_model.h"
+#include "../include/linear_measurement_model.h"
+#include "../include/kalman_filter.h"
+#include "../include/information_filter.h"
 
 struct data
 {
